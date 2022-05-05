@@ -6,11 +6,6 @@ module.exports = {
         './storage/framework/views/*.php',
         './resources/views/**/*.blade.php',
     ],
-    purge: [
-        './resources/**/*.blade.php',
-        './resources/**/*.js',
-        './resources/**/*.vue',
-      ],
 
     theme: {
         extend: {
@@ -20,7 +15,5 @@ module.exports = {
         },
     },
 
-    plugins: [
-        require('@tailwindcss/forms')
-    ],
+    plugins: [require('@tailwindcss/forms')],
 };

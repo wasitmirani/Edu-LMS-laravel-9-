@@ -24,7 +24,3 @@ mix.options({
         port: 8080,
     }
  });
-// mix
-//   .ts("resources/ts/app.ts", "public/js")
-//   .vue({ version: 3 })
-//   .postCss("resources/css/app.css", "public/css", [require("tailwindcss")]);

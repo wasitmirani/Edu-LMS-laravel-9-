@@ -17,4 +17,6 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-Route::view('/{any?}', 'welcome')->where('any', '.*');
+Route::get('/{any?}', function () {
+    return view('welcome');
+  })->where('any', '[\/\w\.-]*');

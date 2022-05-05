@@ -23,5 +23,8 @@
 <router-view></router-view>
         </div>
     </body>
+    <script>
+        window.user="WAsit Mirani";
+    </script>
     <script src="{{ mix('js/app.js') }}"></script>
 </html>

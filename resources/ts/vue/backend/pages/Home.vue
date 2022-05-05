@@ -5,7 +5,12 @@
    </div>
 </template>
 <script>
-   export default {
 
+   export default {
+       mounted() {
+           axios.get('/api/test').then((res)=>{
+               console.log(res);
+           });
+       },
    }
 </script>
