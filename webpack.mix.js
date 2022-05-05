@@ -11,7 +11,20 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
-    .postCss('resources/css/app.css', 'public/css', [
-        //
-    ]);
+ mix.ts('resources/ts/app.ts', 'public/js').vue()
+ .postCss('resources/css/app.css', 'public/css', [
+ require('postcss-import'),
+ require('tailwindcss'),
+ require('autoprefixer'),
+]);
+
+mix.options({
+    hmrOptions: {
+        host: 'edulms.test',  // edulms.test is my local domain used for testing
+        port: 8080,
+    }
+ });
+// mix
+//   .ts("resources/ts/app.ts", "public/js")
+//   .vue({ version: 3 })
+//   .postCss("resources/css/app.css", "public/css", [require("tailwindcss")]);
