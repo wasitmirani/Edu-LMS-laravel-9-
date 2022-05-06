@@ -1,5 +1,11 @@
 <template>
     <div>
+        <div class="row">
+             <!-- <div>
+
+                            <div id="market-overview" data-colors='["#34c38f", "#0a068c"]' class="apex-charts"></div>
+                                                </div> -->
+        </div>
           <div class="nk-content-inner">
                         <div class="nk-content-body">
                            <div class="nk-block-head nk-block-head-sm">
@@ -7,8 +13,7 @@
                                  <div class="nk-block-head-content">
                                     <h3 class="nk-block-title page-title">Dashboard</h3>
                                     <div class="nk-block-des text-soft">
-                                       <p>Welcome to Learning Management Dashboard
-                                           this is vuejs.</p>
+                                       <p>Hi Wasit Mirani, Welcome to Learning Management Dashboard</p>
                                     </div>
                                  </div>
                                  <div class="nk-block-head-content">
@@ -67,9 +72,10 @@
                                                       data-bs-placement="left"
                                                       title="Students Enrolement"></em></div>
                                                 </div>
-                                                <div
-                                                   class="align-end gy-3 gx-5 flex-wrap flex-md-nowrap flex-lg-wrap flex-xxl-nowrap">
-                                                   <div class="nk-sale-data-group flex-md-nowrap g-4">
+                                                <div class="row">
+                                                    <div class="col-5">
+                                                        <div class="align-end gy-3 gx-5 flex-wrap flex-md-nowrap flex-lg-wrap flex-xxl-nowrap">
+                                                     <div class="nk-sale-data-group flex-md-nowrap g-4">
                                                       <div class="nk-sale-data"><span class="amount">5490
                                                          <span class="change down text-danger"><em
                                                             class="icon ni ni-arrow-long-down"></em>16.93%</span></span><span
@@ -80,12 +86,15 @@
                                                          class="change up text-success"><em
                                                          class="icon ni ni-arrow-long-up"></em>4.26%</span></span><span
                                                          class="sub-title">This Week</span></div>
-                                                   </div>
-                                                   <div class="nk-sales-ck sales-revenue">
-                                                      <canvas
-                                                         class="student-enrole" id="enrolement"></canvas>
-                                                   </div>
+                                                    </div>
                                                 </div>
+                                                    </div>
+                                                    <div class="col-7">
+                                                         <div  id="column_chart_datalabel" data-colors='["#0071dc"]' class="apex-charts" dir="ltr"></div>
+                                                       
+                                                    </div>
+                                                </div>
+
                                              </div>
                                           </div>
                                        </div>
@@ -636,6 +645,92 @@ export default {
         return {
             message: 'Welcome to Vue 3 using Ts in laravel 9 BY Wasit Mirani'
         };
+    },
+    created() {
+        console.log('MasterDashboard created');
+
+    },
+    mounted(){
+        console.log('MasterDashboard mounted');
+       var columnDatalabelColors = getChartColorsArray("#column_chart_datalabel"),
+    options = {
+        chart: { height: 150, type: "bar", toolbar: { show: !1 } },
+        plotOptions: {
+            bar: {  borderRadius: 4, dataLabels: { position: "top" } },
+        },
+        dataLabels: {
+            enabled: !0,
+            formatter: function (e) {
+                return e + "%";
+            },
+            offsetY: -22,
+            style: { fontSize: "12px", colors: ["#304758"] },
+        },
+        series: [
+            {
+                name: "Inflation",
+                data: [2.5, 3.2, 5, 10.1, 4.2, 3.8, 3, 2.4, 4, 1.2, 3.5, 0.8],
+            },
+        ],
+        colors: columnDatalabelColors,
+        grid: { borderColor: "#f1f1f1" },
+        xaxis: {
+            categories: [
+                "Jan",
+                "Feb",
+                "Mar",
+                "Apr",
+                "May",
+                "Jun",
+                "Jul",
+                "Aug",
+                "Sep",
+                "Oct",
+                "Nov",
+                "Dec",
+            ],
+            position: "top",
+            labels: { offsetY: -18 },
+            axisBorder: { show: !1 },
+            axisTicks: { show: !1 },
+            crosshairs: {
+                fill: {
+                    type: "gradient",
+                    gradient: {
+                        colorFrom: "#D8E3F0",
+                        colorTo: "#BED1E6",
+                        stops: [0, 100],
+                        opacityFrom: 0.2,
+                        opacityTo: 0.5,
+                    },
+                },
+            },
+            tooltip: { enabled: !0, offsetY: -35 },
+        },
+        yaxis: {
+            axisBorder: { show: !1 },
+            axisTicks: { show: !1 },
+            labels: {
+                show: !1,
+                formatter: function (e) {
+                    return e + "%";
+                },
+            },
+        },
+        title: {
+            text: "Monthly Inflation in Argentina, 2002",
+            floating: !0,
+            offsetY: 1,
+            align: "center",
+            style: { color: "#8094ae", fontWeight: "500" },
+        },
+    };
+(chart = new ApexCharts(
+    document.querySelector("#column_chart_datalabel"),
+    options
+)).render(),
+    ChartColorChange(chart, "#column_chart_datalabel");
+
     }
 }
 </script>
