@@ -87,9 +87,24 @@ class HelperComponent
                ]
                ],
                [
+                "menu" => [
+                       "title" => 'Report',
+                       'can'=>'reports-management-dropdown',
+                       "icon" => "ni-pie-fill",
+                       "sub_menu" => [
+                           setSubMenu(
+                               "Reports",
+                               null,
+                               "reports-view",
+                               "/reports",
+                           ),
+                       ]
+               ]
+               ],
+               [
                 "single_link" => setSingleLink("Students", "ni-users-fill", "students-view", "/students"),
               ],
-               [
+              [
                 "menu" => [
                        "title" => 'Enrolment',
                        'can'=>'enrolment-management-dropdown',
@@ -116,6 +131,24 @@ class HelperComponent
             ],
             [
                 "single_link" => setSingleLink("Admin profile", "ni-account-setting-fill", "admin-profile-view", "/admin-profile"),
+            ],
+            [
+                "menu" => [
+                       "title" => 'Invoice',
+                       'can'=>'invoice-management-dropdown',
+                       "icon" => "ni-file-docs",
+                       "sub_menu" => [
+                           setSubMenu(
+                               "Invoices",
+                               null,
+                               "invoices-view",
+                               "/invoices",
+                           ),
+                       ]
+               ]
+               ],
+            [
+                "single_link" => setSingleLink("Settings", "ni-setting-alt-fill", "settings-view", "/settings"),
             ],
             [
                 "single_link" => setSingleLink("Log out", "ni-signout", "services-view", "/logout"),
