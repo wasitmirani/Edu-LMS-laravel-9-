@@ -13,10 +13,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', function () {
+    return redirect('/portal');
+});
 
-Route::get('/{any?}', function () {
+
+Route::get('/login',[AuthController::class,'login'])->name('login');
+
+Route::get('/portal/{any?}', function () {
     return view('backend.index');
-  })->where('any', '[\/\w\.-]*');
+})->where('any', '[\/\w\.-]*');
+
+
+
+require __DIR__.'/auth.php';

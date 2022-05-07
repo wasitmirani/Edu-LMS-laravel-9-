@@ -10,18 +10,18 @@ let getComponent=(file_name:String)=>{
 
 
 
-
+const per_fix="/portal";
 const routes = [
     // { path: "/:catchAll(.*)",
     // name: "NotFound",
     // component: () => getComponent("error/404") },
     // { path: "/unauthorized/user", component: () => setComponent("error/401"),name: "unauthorized" },
     {
-        path: "/",
-        redirect: { path: '/home/dashboard' }
+        path: "/portal",
+        redirect: { name: 'master_dashboard' }
     },
     {
-        path: "/home/dashboard", component:()=>getComponent("dashboard/MasterDashboard"), name: "Dashboard",
+        path: `${per_fix}/home/dashboard`, component:()=>getComponent("dashboard/MasterDashboard"), name: "master_dashboard",
         meta: { permissions: "dashboard-view" }
     },
 

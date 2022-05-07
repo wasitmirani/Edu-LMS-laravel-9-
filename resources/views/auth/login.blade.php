@@ -1,56 +1,47 @@
-<x-guest-layout>
-    <x-auth-card>
-        <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
-        </x-slot>
-
-        <!-- Session Status -->
-        <x-auth-session-status class="mb-4" :status="session('status')" />
-
-        <!-- Validation Errors -->
-        <x-auth-validation-errors class="mb-4" :errors="$errors" />
-
-        <form method="POST" action="{{ route('login') }}">
-            @csrf
-
-            <!-- Email Address -->
-            <div>
-                <x-label for="email" :value="__('Email')" />
-
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
+@extends('layouts.backend.authmaster')
+@section('content')
+<div class="card">
+    <div class="card-inner card-inner-lg">
+        <div class="nk-block-head">
+            <div class="nk-block-head-content">
+                <h4 class="nk-block-title">Sign-In</h4>
+                <div class="nk-block-des">
+                    <p>Access the {{config('app.name')}} panel using your email and password.</p>
+                </div>
             </div>
-
-            <!-- Password -->
-            <div class="mt-4">
-                <x-label for="password" :value="__('Password')" />
-
-                <x-input id="password" class="block mt-1 w-full"
-                                type="password"
-                                name="password"
-                                required autocomplete="current-password" />
+        </div>
+        <form action="/demo2/index.html">
+            <div class="form-group">
+                <div class="form-label-group"><label class="form-label" for="default-01">Email
+                        or Username</label></div>
+                <div class="form-control-wrap"><input type="text"
+                        class="form-control form-control-lg" id="default-01"
+                        placeholder="Enter your email address or username"></div>
             </div>
-
-            <!-- Remember Me -->
-            <div class="block mt-4">
-                <label for="remember_me" class="inline-flex items-center">
-                    <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" name="remember">
-                    <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
-                </label>
+            <div class="form-group">
+                <div class="form-label-group"><label class="form-label"
+                        for="password">Password</label><a class="link link-primary link-sm"
+                        href="/demo2/pages/auths/auth-reset-v2.html">Forgot Password?</a></div>
+                <div class="form-control-wrap"><a href="#"
+                        class="form-icon form-icon-right passcode-switch lg"
+                        data-target="password"><em
+                            class="passcode-icon icon-show icon ni ni-eye"></em><em
+                            class="passcode-icon icon-hide icon ni ni-eye-off"></em></a><input
+                        type="password" class="form-control form-control-lg" id="password"
+                        placeholder="Enter your password"></div>
             </div>
-
-            <div class="flex items-center justify-end mt-4">
-                @if (Route::has('password.request'))
-                    <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
-                        {{ __('Forgot your password?') }}
-                    </a>
-                @endif
-
-                <x-button class="ml-3">
-                    {{ __('Log in') }}
-                </x-button>
-            </div>
+            <div class="form-group"><button class="btn btn-lg btn-primary btn-block">Sign
+                    in</button></div>
         </form>
-    </x-auth-card>
-</x-guest-layout>
+        <div class="form-note-s2 text-center pt-4"> New on our platform? <a
+                href="/demo2/pages/auths/auth-register-v2.html">Create an account</a></div>
+        <div class="text-center pt-4 pb-3">
+            <h6 class="overline-title overline-title-sap"><span>OR</span></h6>
+        </div>
+        <ul class="nav justify-center gx-4">
+            <li class="nav-item"><a class="nav-link" href="#">Facebook</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Google</a></li>
+        </ul>
+    </div>
+</div>
+@endsection
