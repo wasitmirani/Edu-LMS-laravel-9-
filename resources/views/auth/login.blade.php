@@ -10,25 +10,45 @@
                 </div>
             </div>
         </div>
-        <form action="/demo2/index.html">
+               <!-- Session Status -->
+        <div class="mt">
+                <x-auth-session-status class="mb-4 text-danger" :status="session('status')" />
+
+                <!-- Validation Errors -->
+                <x-auth-validation-errors class="mb-4 text-danger" :errors="$errors" />
+        </div>
+        <form action="{{route('login')}}" method="post">
+            @csrf
             <div class="form-group">
                 <div class="form-label-group"><label class="form-label" for="default-01">Email
                         or Username</label></div>
-                <div class="form-control-wrap"><input type="text"
-                        class="form-control form-control-lg" id="default-01"
-                        placeholder="Enter your email address or username"></div>
+                <div class="form-control-wrap">
+                <input type="text" name="email" value="{{ old('email') }}" class="form-control form-control-lg @error('email') is-invalid @enderror" id="default-01" placeholder="Enter your email address or username">
+                @error('email')
+                <span class="invalid-feedback" role="alert">
+                                  <strong>{{ $message }}</strong>
+                </span>
+                @enderror
+            </div>
+
             </div>
             <div class="form-group">
                 <div class="form-label-group"><label class="form-label"
                         for="password">Password</label><a class="link link-primary link-sm"
-                        href="/demo2/pages/auths/auth-reset-v2.html">Forgot Password?</a></div>
+                        href="#">Forgot Password?</a></div>
                 <div class="form-control-wrap"><a href="#"
                         class="form-icon form-icon-right passcode-switch lg"
                         data-target="password"><em
                             class="passcode-icon icon-show icon ni ni-eye"></em><em
                             class="passcode-icon icon-hide icon ni ni-eye-off"></em></a><input
-                        type="password" class="form-control form-control-lg" id="password"
-                        placeholder="Enter your password"></div>
+                        type="password" name="password" class="form-control form-control-lg @error('password') is-invalid @enderror" id="password"
+                        placeholder="Enter your password">
+                        @error('password')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                    </div>
             </div>
             <div class="form-group"><button class="btn btn-lg btn-primary btn-block">Sign
                     in</button></div>

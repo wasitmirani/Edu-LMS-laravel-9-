@@ -14,13 +14,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return redirect('/portal');
+    return redirect('/portal/dashboard');
 });
 
 
 Route::get('/login',[AuthController::class,'login'])->name('login');
 
-Route::get('/portal/{any?}', function () {
+Route::get('/portal/dashboard', function () {
     return view('backend.index');
 })->where('any', '[\/\w\.-]*');
 

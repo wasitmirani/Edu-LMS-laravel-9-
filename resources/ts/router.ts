@@ -17,11 +17,11 @@ const routes = [
     // component: () => getComponent("error/404") },
     // { path: "/unauthorized/user", component: () => setComponent("error/401"),name: "unauthorized" },
     {
-        path: "/portal",
+        path: "/portal/dashboard",
         redirect: { name: 'master_dashboard' }
     },
     {
-        path: `${per_fix}/home/dashboard`, component:()=>getComponent("dashboard/MasterDashboard"), name: "master_dashboard",
+        path: `${per_fix}/dashboard`, component:()=>getComponent("dashboard/MasterDashboard"), name: "master_dashboard",
         meta: { permissions: "dashboard-view" }
     },
 

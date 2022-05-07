@@ -19560,21 +19560,22 @@ var getComponent = function getComponent(file_name) {
   return route;
 };
 
+var per_fix = "/portal";
 var routes = [// { path: "/:catchAll(.*)",
 // name: "NotFound",
 // component: () => getComponent("error/404") },
 // { path: "/unauthorized/user", component: () => setComponent("error/401"),name: "unauthorized" },
 {
-  path: "/",
+  path: "/portal/dashboard",
   redirect: {
-    path: '/home/dashboard'
+    name: 'master_dashboard'
   }
 }, {
-  path: "/home/dashboard",
+  path: "".concat(per_fix, "/dashboard"),
   component: function component() {
     return getComponent("dashboard/MasterDashboard");
   },
-  name: "Dashboard",
+  name: "master_dashboard",
   meta: {
     permissions: "dashboard-view"
   }
